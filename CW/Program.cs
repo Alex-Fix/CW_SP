@@ -15,9 +15,9 @@ namespace CW
             {
                 if (args.Length != 1)
                     throw new ArgumentException("Incorrect arguments");
-                if (args[1].Substring(args[0].Length - 4) != ".p72")
+                if (args[0].Substring(args[0].Length - 4) != ".p72")
                     throw new ArgumentException("Incorrect file extension");
-                if (!Directory.GetFiles(Directory.GetCurrentDirectory()).Any(f => String.Equals(f, args[0])))
+                if (!Directory.GetFiles(Directory.GetCurrentDirectory()).Any(f => String.Equals(f, $"{Directory.GetCurrentDirectory()}\\{args[0]}")))
                     throw new ArgumentException("Such a file does not exist in the current directory");
                 Parser parser = new Parser();
                 var parserResult = parser.ParseFile($"{Directory.GetCurrentDirectory()}\\{args[0]}");
@@ -27,6 +27,7 @@ namespace CW
             {
                 Console.WriteLine(e.Message);
             }
+            Console.ReadKey();
         }
     }
 }

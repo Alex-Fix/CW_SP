@@ -43,12 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Coment.cs" />
-    <Compile Include="Identifier.cs" />
     <Compile Include="Lexem.cs" />
-    <Compile Include="NumericConstant.cs" />
     <Compile Include="Parser.cs" />
-    <Compile Include="ParserResult.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SyntacticAnalyser.cs" />

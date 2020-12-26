@@ -8,6 +8,7 @@ namespace CW
 {
     public class SyntacticAnalyser
     {
-        
+        //
+        //public IDictionary<int, string> 
     }
 }
