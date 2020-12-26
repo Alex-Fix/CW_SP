@@ -28,10 +28,10 @@ namespace CW
                     using(var writer = new StreamWriter($"{Directory.GetCurrentDirectory()}\\{args[0].Substring(0, args[0].Length - 4) + "Errors.txt"}"))
                     {
                         foreach (var error in errors)
-                            writer.WriteLine($"Line: {error.LineIndex}. Error: {error.ErrorText}");
+                            writer.WriteLine($"Line: {error.LineIndex+1}. Error: {error.ErrorText}");
                     }
                     foreach (var error in errors)
-                        Console.WriteLine($"Line: {error.LineIndex}. Error: {error.ErrorText}");
+                        Console.WriteLine($"Line: {error.LineIndex+1}. Error: {error.ErrorText}");
                     throw new Exception($"\nCount of errors: {errors.Count()}. You can see all errors in file '{args[0].Substring(0, args[0].Length - 4) + "Errors.txt"}'");
                 }
                 

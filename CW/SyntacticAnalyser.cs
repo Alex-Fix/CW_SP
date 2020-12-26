@@ -178,7 +178,7 @@ namespace CW
                             errors.Add(new ErrorModel(negErrorsCounter--, "After the keyword 'goto' should be numeric constant"));
                         else
                         {
-                            if (!(lexemsList[i+6].LexemType == LexemType.NumericConstant && lexemsList[i+6].Value >= lexemsList[afterStartIndex].LineIndex && lexemsList[i + 6].Value< lexemsList[finishIndex].LineIndex))
+                            if (!(lexemsList[i+6].LexemType == LexemType.NumericConstant && lexemsList[i+6].Value > lexemsList[afterStartIndex].LineIndex && lexemsList[i + 6].Value<= lexemsList[finishIndex].LineIndex))
                                 errors.Add(new ErrorModel(lexemsList[i + 6].LineIndex, "After the keyword 'goto' should be numeric constant"));
                         }
                         if (lexemsList.ElementAtOrDefault(i + 7) is null)
@@ -209,7 +209,7 @@ namespace CW
                             errors.Add(new ErrorModel(negErrorsCounter--, "After the keyword 'goto' should be numeric constant"));
                         else
                         {
-                            if (!(lexemsList[i + 1].LexemType == LexemType.NumericConstant && lexemsList[i + 1].Value >= lexemsList[afterStartIndex].LineIndex && lexemsList[i + 1].Value < lexemsList[finishIndex].LineIndex))
+                            if (!(lexemsList[i + 1].LexemType == LexemType.NumericConstant && lexemsList[i + 1].Value > lexemsList[afterStartIndex].LineIndex && lexemsList[i + 1].Value <= lexemsList[finishIndex].LineIndex))
                                 errors.Add(new ErrorModel(lexemsList[i + 1].LineIndex, "After the keyword 'goto' should be numeric constant"));
                         }
                         i++;
