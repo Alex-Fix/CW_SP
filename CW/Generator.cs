@@ -299,14 +299,6 @@ namespace CW
             code += "ii_3:" + "\n";
             code += "ret" + "\n";
             code += "InputInt endp" + "\n\r";
-            code += "OutStr proc" + "\n";
-            code += "mov  ecx, eax" + "\n";
-            code += "invoke GetStdHandle, STD_OUTPUT_HANDLE" + "\n";
-            code += "mov consoleHandle_0,eax" + "\n";
-            code += "mov  eax, ecx" + "\n";
-            code += "invoke WriteConsole, consoleHandle_0, eax, edx, ADDR bytesWrite_0, 0" + "\n";
-            code += "ret" + "\n";
-            code += "OutStr endp" + "\n\r";
             code += "end start_st" + "\n";
             return code;
         }
