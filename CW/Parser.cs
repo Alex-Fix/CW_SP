@@ -379,11 +379,16 @@ namespace CW
             var wasMinus = false;
             while (line[endPosition] != ' ' && line[endPosition] != '\t' && line[endPosition] != '\n')
             {
-                if (!((line[i] >= '0' && line[i] <= '9') || line[endPosition] == '-'))
+                if (!((line[endPosition] >= '0' && line[endPosition] <= '9') || line[endPosition] == '-'))
                     isCorrect = false;
-                if (line[i] == '-')
+                if (line[endPosition] == '-')
+                {
                     wasMinus = true;
-                if (line[i] == '-' && wasMinus)
+                    endPosition++;
+                    continue;
+                }
+                    
+                if (line[endPosition] == '-' && wasMinus)
                     isCorrect = false;
                 endPosition++;
             }

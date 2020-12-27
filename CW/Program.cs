@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,20 @@ namespace CW
                         Console.WriteLine($"Line: {error.LineIndex+1}. Error: {error.ErrorText}");
                     throw new Exception($"\nCount of errors: {errors.Count()}. You can see all errors in file '{args[0].Substring(0, args[0].Length - 4) + "Errors.txt"}'");
                 }
-                
+                Generator generator = new Generator();
+                var code = generator.Generate(lexems);
+                if (string.IsNullOrEmpty(code))
+                    throw new ArgumentNullException(nameof(code));
+                using(var writer = new StreamWriter($"{Directory.GetCurrentDirectory()}\\{args[0].Substring(0, args[0].Length - 4) + "Assembler.asm"}"))
+                {
+                    writer.Write(code);
+                }
+                if(Directory.GetFiles(Directory.GetCurrentDirectory()).Contains($"{Directory.GetCurrentDirectory()}\\ml.exe") &&
+                    Directory.GetFiles(Directory.GetCurrentDirectory()).Contains($"{Directory.GetCurrentDirectory()}\\link.exe"))
+                {
+                    Process.Start($"{Directory.GetCurrentDirectory()}\\ml.exe", $"/c /Zd /coff {args[0].Substring(0, args[0].Length - 4) + "Assembler.asm"}").WaitForExit();
+                    Process.Start($"{Directory.GetCurrentDirectory()}\\link.exe", $"/SUBSYSTEM:CONSOLE {args[0].Substring(0, args[0].Length - 4) + "Assembler.obj"}").WaitForExit();
+                }
             }
             catch(Exception e)
             {

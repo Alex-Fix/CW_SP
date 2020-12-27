@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ErrorModel.cs" />
+    <Compile Include="Generator.cs" />
     <Compile Include="Lexem.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
